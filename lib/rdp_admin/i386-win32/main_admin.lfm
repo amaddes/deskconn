@@ -1,0 +1,178 @@
+object frmAdmin: TfrmAdmin
+  Left = 250
+  Height = 600
+  Top = 100
+  Width = 900
+  Caption = 'RDP Admin - удалённое управление'
+  ClientHeight = 600
+  ClientWidth = 900
+  Menu = MainMenu1
+  Position = poScreenCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  OnKeyUp = FormKeyUp
+  LCLVersion = '4.8.0.0'
+  object PanelTop: TPanel
+    Left = 0
+    Height = 110
+    Top = 0
+    Width = 900
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 110
+    ClientWidth = 900
+    TabOrder = 0
+    object lblIP: TLabel
+      Left = 12
+      Height = 15
+      Top = 14
+      Width = 16
+      Caption = 'IP:'
+    end
+    object edIP: TEdit
+      Left = 50
+      Height = 23
+      Top = 10
+      Width = 140
+      TabOrder = 0
+      Text = '127.0.0.1'
+    end
+    object lblPort: TLabel
+      Left = 200
+      Height = 15
+      Top = 14
+      Width = 32
+      Caption = 'Порт:'
+    end
+    object sePort: TSpinEdit
+      Left = 240
+      Height = 23
+      Top = 10
+      Width = 80
+      MaxValue = 65535
+      MinValue = 1
+      TabOrder = 1
+      Value = 5555
+    end
+    object lblPassword: TLabel
+      Left = 330
+      Height = 15
+      Top = 14
+      Width = 47
+      Caption = 'Пароль:'
+    end
+    object edPassword: TEdit
+      Left = 390
+      Height = 23
+      Top = 10
+      Width = 150
+      TabOrder = 2
+    end
+    object btnConnect: TButton
+      Left = 12
+      Height = 30
+      Top = 44
+      Width = 140
+      Caption = 'Подключиться'
+      OnClick = btnConnectClick
+      TabOrder = 3
+    end
+    object lblStatus: TLabel
+      Left = 170
+      Height = 15
+      Top = 52
+      Width = 92
+      Caption = 'Не подключено'
+    end
+    object cbRemember: TCheckBox
+      Left = 12
+      Height = 19
+      Top = 84
+      Width = 220
+      Caption = 'Запомнить подключение'
+      TabOrder = 4
+    end
+    object cbViewOnly: TCheckBox
+      Left = 250
+      Height = 19
+      Top = 84
+      Width = 220
+      Caption = 'Только просмотр'
+      OnClick = cbViewOnlyClick
+      TabOrder = 5
+    end
+  end
+  object PaintBox1: TPaintBox
+    Left = 0
+    Height = 458
+    Top = 110
+    Width = 900
+    Align = alClient
+    OnMouseDown = PaintBox1MouseDown
+    OnMouseMove = PaintBox1MouseMove
+    OnMouseUp = PaintBox1MouseUp
+    OnMouseWheel = PaintBox1MouseWheel
+    OnPaint = PaintBox1Paint
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 32
+    Top = 568
+    Width = 900
+    Panels = <
+      item
+        Width = 150
+      end
+      item
+        Width = 200
+      end
+      item
+        Width = 200
+      end
+      item
+        Width = 150
+      end>
+    SimplePanel = False
+  end
+  object MainMenu1: TMainMenu
+    Left = 820
+    Top = 20
+    object MenuActions: TMenuItem
+      Caption = 'Действия'
+      object MenuCtrlAltDel: TMenuItem
+        Caption = 'Отправить Ctrl+Alt+Del'
+        OnClick = MenuCtrlAltDelClick
+      end
+    end
+    object MenuView: TMenuItem
+      Caption = 'Вид'
+      object MenuFullscreen: TMenuItem
+        Caption = 'Полноэкранный режим (F11)'
+        OnClick = MenuFullscreenClick
+      end
+      object MenuScale: TMenuItem
+        Caption = 'Масштаб'
+        object MenuScaleFit: TMenuItem
+          Caption = 'По размеру окна'
+          Checked = True
+          GroupIndex = 1
+          RadioItem = True
+          OnClick = MenuScaleFitClick
+        end
+        object MenuScale100: TMenuItem
+          Caption = '100%'
+          GroupIndex = 1
+          RadioItem = True
+          OnClick = MenuScale100Click
+        end
+        object MenuScaleFree: TMenuItem
+          Caption = 'Свободный'
+          GroupIndex = 1
+          RadioItem = True
+          OnClick = MenuScaleFreeClick
+        end
+      end
+    end
+  end
+end

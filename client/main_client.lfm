@@ -1,0 +1,139 @@
+object frmMain: TfrmMain
+  Left = 300
+  Height = 480
+  Top = 150
+  Width = 640
+  Caption = 'RDP Client - удалённый доступ'
+  ClientHeight = 480
+  ClientWidth = 640
+  Position = poScreenCenter
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  LCLVersion = '4.8.0.0'
+  object PanelTop: TPanel
+    Left = 0
+    Height = 150
+    Top = 0
+    Width = 640
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 150
+    ClientWidth = 640
+    TabOrder = 0
+    object lblPort: TLabel
+      Left = 12
+      Height = 15
+      Top = 14
+      Width = 32
+      Caption = 'Порт:'
+    end
+    object sePort: TSpinEdit
+      Left = 70
+      Height = 23
+      Top = 10
+      Width = 80
+      MaxValue = 65535
+      MinValue = 1
+      TabOrder = 0
+      Value = 5555
+    end
+    object lblPassword: TLabel
+      Left = 170
+      Height = 15
+      Top = 14
+      Width = 47
+      Caption = 'Пароль:'
+    end
+    object edPassword: TEdit
+      Left = 228
+      Height = 23
+      Top = 10
+      Width = 120
+      ReadOnly = True
+      TabOrder = 1
+      Text = 'edPassword'
+    end
+    object btnRegen: TButton
+      Left = 356
+      Height = 25
+      Top = 8
+      Width = 190
+      Caption = 'Сгенерировать заново'
+      OnClick = btnRegenClick
+      TabOrder = 2
+    end
+    object btnStartStop: TButton
+      Left = 12
+      Height = 30
+      Top = 46
+      Width = 110
+      Caption = 'Старт'
+      OnClick = btnStartStopClick
+      TabOrder = 3
+    end
+    object shpStatus: TShape
+      Left = 140
+      Height = 16
+      Top = 52
+      Width = 16
+      Brush.Color = clRed
+      Shape = stCircle
+    end
+    object lblStatus: TLabel
+      Left = 164
+      Height = 15
+      Top = 56
+      Width = 66
+      Caption = 'Остановлен'
+    end
+    object cbAutostart: TCheckBox
+      Left = 12
+      Height = 19
+      Top = 88
+      Width = 260
+      Caption = 'Запускать при старте Windows'
+      OnClick = cbAutostartClick
+      TabOrder = 4
+    end
+    object cbTrayMinimize: TCheckBox
+      Left = 12
+      Height = 19
+      Top = 114
+      Width = 200
+      Caption = 'Сворачивать в трей'
+      TabOrder = 5
+    end
+  end
+  object MemoLog: TMemo
+    Left = 0
+    Height = 330
+    Top = 150
+    Width = 640
+    Align = alClient
+    Lines.Strings = (
+      ''
+    )
+    ReadOnly = True
+    ScrollBars = ssVertical
+    TabOrder = 1
+  end
+  object TrayIcon1: TTrayIcon
+    PopupMenu = PopupMenu1
+    OnDblClick = TrayIcon1DblClick
+    Left = 560
+    Top = 20
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 560
+    Top = 60
+    object MenuShow: TMenuItem
+      Caption = 'Показать'
+      OnClick = MenuShowClick
+    end
+    object MenuExit: TMenuItem
+      Caption = 'Выход'
+      OnClick = MenuExitClick
+    end
+  end
+end
